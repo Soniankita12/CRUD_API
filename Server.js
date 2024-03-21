@@ -1,7 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const Product = require("./Model/ProductModel");
+const cors =require("cors");
+const port =process.env.PORT || 3000;
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.get("/", (req, res) => {
   res.send("hello nodeji");
@@ -81,9 +84,11 @@ app.delete("/product/:id", async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log("node is running");
 });
+
+
 mongoose
   .connect(
     "mongodb+srv://Ankita:Ankita@cluster0.6lbx3ge.mongodb.net/Node-Api?retryWrites=true&w=majority&appName=Cluster0"
