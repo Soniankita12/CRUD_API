@@ -12,7 +12,7 @@ const MONGO_URL = process.env.MONGO_URL;
 app.use(express.json());
 //routes
 
-app.use('/api',ProductRoute)
+app.use("/api/product", ProductRoute);
 
 app.get("/", (req, res) => {
   res.send("hello nodeji");
