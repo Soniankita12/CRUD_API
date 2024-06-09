@@ -3,7 +3,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const port = process.env.PORT || 3000;
-const ProductRoute = require('./Routes/ProductRoute');
+const ProductRoute = require("./Routes/ProductRoute");
+const errorMiddleWare = require("./Middleware/errorMiddleware");
 
 const app = express();
 app.use(cors());
@@ -22,9 +23,8 @@ app.get("/create", (req, res) => {
   res.send("hello nodeji create");
 });
 
+app.use(errorMiddleWare);
 // Create data
-
-
 
 mongoose
   .connect(MONGO_URL)
